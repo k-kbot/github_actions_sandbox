@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    actionlint:
+      glob: ".github/workflows/*.{yml,yaml}"
+      run: actionlint {staged_files}
+      skip:
+        - merge
+        - rebase
