@@ -1,0 +1,24 @@
+# https://github.com/slackapi/slack-github-action
+
+name: "Send notification to Slack"
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Message to send to Slack"
+        required: true
+        type: string
+
+jobs:
+  send_notification:
+    name: Slack notify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send notification to Slack
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: ${{ inputs.message }}
