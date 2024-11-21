@@ -1,0 +1,13 @@
+name: Debug
+on: push
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          pwd
+          date
+      - run: |
+          set -x
+          pwd
+          date
